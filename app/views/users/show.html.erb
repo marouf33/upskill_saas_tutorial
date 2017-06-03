@@ -1,6 +1,7 @@
+<%= image_tag @user.profile.avatar.url %>
 <%= @user.profile.first_name %> <%= @user.profile.last_name %>
 <%= @user.profile.job_title %>
-<% if user_signed_in? && (current_user.plan_id == 2 || current_user.user_id == params[:id]) %>
+<% if user_signed_in? && (current_user.plan_id == 2 || current_user.id.to_s == params[:id].to_s) %>
   <%= @user.profile.phone_number %>
   <%= @user.profile.contact_email %>
 <% end %>
