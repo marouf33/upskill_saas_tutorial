@@ -33,10 +33,18 @@
               <%= link_to "Log In", new_user_session_path, class:"btn btn-default navbar-btn" %>
             <% end %>
           </div>
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav divider-vertical navbar-right ">
             <%if user_signed_in? %>
               <li><%= link_to "Community", users_path %></li>
-              <li><%= link_to "My Account", edit_user_registration_path %></li>
+              <li>
+                <%if current_user.profile && current_user.profile.avatar %>
+                  <%= link_to current_user do %>
+                      <%= image_tag current_user.profile.avatar.url,class: 'user-navbar-avatar' %>      
+                  <% end %>
+                <% end %>
+              </li>
+              <li><%= link_to "My Account", edit_user_registration_path ,class: ('my-account-link' if current_user.profile && current_user.profile.avatar ) %></li>
+              
             <% end %>
             <li><%= link_to "About", about_path %></li>
             <li><%= link_to "Contact Us", new_contact_path %></li>
