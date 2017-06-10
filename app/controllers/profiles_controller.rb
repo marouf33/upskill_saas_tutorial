@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user#,only [:new, :edit]
+  before_action :authenticate_user!#,only [:new, :edit]
   before_action :only_current_user
     
   # GET to /users/:user_id/profile/new
@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
     # Render blank profile details form.
     @profile = Profile.new
   end
+  
   
   # POST to /users/:user_id/profile
   def create
